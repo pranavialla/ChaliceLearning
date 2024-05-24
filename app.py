@@ -37,7 +37,10 @@ users={
 }
 @app.route('/users/{id}')
 def get_user(id):
-    return {'name': users.get(id)}
+    try :
+        return {'name': users[id]}
+    except KeyError:
+        return {'error': 'user %s not found'.format(id) }
 
 
 @app.route('/users')
