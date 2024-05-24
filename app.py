@@ -1,4 +1,7 @@
-from chalice import Chalice
+import gzip
+import json
+
+from chalice import Chalice, Response
 
 app = Chalice(app_name='ChaliceLearning')
 
@@ -54,3 +57,18 @@ def get_request_info():
 @app.route('/getMethod')
 def get_Method():
     return app.current_request.method
+
+
+#will give error as chalice serialise response to json by it is of diff class
+@app.route('/getHeaders')
+def get_Headers():
+    return app.current_request.headers
+
+
+@app.route('/RequestHeaders')
+def get_requestHeaders():
+
+    return Response(body="text response with text contentType",
+                    status_code=200,
+                    headers={"requestId": "kgjfghfxrytu6ygjh",
+                             "Content-Type": "text/plain"})
