@@ -18,12 +18,27 @@ def hello_name(name):
    # '/hello/james' -> {"hello": "james"}
    return {'hello': name}
 
-@app.route('/users', methods=['POST'])
+@app.route('/eco', methods=['POST'])
 def create_user():
     # This is the JSON body the user sent in their POST request.
     user_as_json = app.current_request.json_body
     # We'll echo the json body back to the user in a 'user' key.
-    return {'user': user_as_json}
+    return {'users': user_as_json}
 
 # See the README documentation for more examples.
 #
+
+
+users={
+    "1" : "pranavi",
+    "2" : "raju",
+    "3" : "lakshmi"
+}
+@app.route('/users/{id}')
+def get_user(id):
+    return {'name': users.get(id)}
+
+
+@app.route('/users')
+def get_user():
+    return users
