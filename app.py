@@ -47,3 +47,6 @@ def get_user(id):
 def get_user():
     return users
 
+@app.route('/introspect')
+def get_request_info():
+    return app.current_request.to_dict()
