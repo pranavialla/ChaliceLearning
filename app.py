@@ -2,6 +2,7 @@ from chalice import Chalice
 
 app = Chalice(app_name='ChaliceLearning')
 
+app.debug=True
 
 @app.route('/')
 def index():
@@ -42,3 +43,4 @@ def get_user(id):
 @app.route('/users')
 def get_user():
     return users
+
