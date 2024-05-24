@@ -50,3 +50,7 @@ def get_user():
 @app.route('/introspect')
 def get_request_info():
     return app.current_request.to_dict()
+
+@app.route('/getMethod')
+def get_Method():
+    return app.current_request.method
